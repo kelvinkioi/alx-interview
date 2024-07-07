@@ -8,7 +8,7 @@ print Usage: nqueens N, followed by a new line, and exit with the status 1
 where N must be an integer greater or equal to 4
 If N is not an integer, print N must be a number,
 followed by a new line, and exit with the status 1
-If N is smaller than 4, print N must be at least 4, 
+If N is smaller than 4, print N must be at least 4,
 followed by a new line, and exit with the status 1
 """
 
@@ -47,7 +47,7 @@ if __name__ == '__main__':
             safe = True
             for cord in p_queens:
                 col = cord[1]
-                if(col == c or col + (r-cord[0]) == c or
+                if (col == c or col + (r-cord[0]) == c or
                         col - (r-cord[0]) == c):
                     safe = False
                     break
@@ -83,7 +83,7 @@ if __name__ == '__main__':
             r -= 1
             while r >= 0:
                 c = p_queens[r][1] + 1
-                del p_queens[r] 
+                del p_queens[r]
                 if c < n:
                     break
                 r -= 1
