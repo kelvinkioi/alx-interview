@@ -1,4 +1,4 @@
-#!/Users/KioiChege/.nvm/versions/node/v14.21.3/bin/node
+#!/usr/bin/node
 
 const request = require('request');
 request(`https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`, (error, _, body) => {
