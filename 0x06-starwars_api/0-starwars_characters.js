@@ -1,11 +1,11 @@
-#!/usr/bin/node
+#!/Users/KioiChege/.nvm/versions/node/v14.21.3/bin/node
 
 const request = require('request');
 request(`https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`, (error, _, body) => {
   if (error) {
     console.error('Error:', error);
   } else {
-    const charName = JSON.parse(body).char.map(
+    const charName = JSON.parse(body).characters.map(
       url => new Promise((resolve, reject) => {
         request(url, (promiseError, __, charReqBody) => {
           if (promiseError) {
