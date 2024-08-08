@@ -10,21 +10,35 @@ determine who the winner of each game is.
 """
 
 
+def primeNumbers(n):
+    """
+    This returns list of prime numbers between 1 and n inclusive
+    """
+    primeNos = []
+    filtered = [True] * (n + 1)
+    for prime in range(2, n + 1):
+        if (filtered[prime]):
+            primeNos.append(prime)
+            for i in range(prime, n + 1, prime):
+                filtered[i] = False
+    return primeNos
+
+
 def isWinner(x, nums):
-    """ Determining who the winner is """
-    if not nums or x < 1:
+    """
+    This determines winner of Prime Game
+    """
+    if x is None or nums is None or x == 0 or nums == []:
         return None
-    n = max(nums)
-    primes = [True for _ in range(max(n + 1, 2))]
-    primes[0:2] = [False, False]
-    for i in range(2, int(n ** 0.5) + 1):
-        if primes[i]:
-            for j in range(i * i, n + 1, i):
-                primes[j] = False
-    primes = [i for i in range(n + 1) if primes[i]]
-    m = 0
-    for i in nums:
-        m += sum(prime <= i for prime in primes)
-    if m % 2 == 0:
-        return "Ben"
-    return "Maria"
+    Maria = Ben = 0
+    for i in range(x):
+        primeNos = primeNumbers(nums[i])
+        if len(primeNos) % 2 == 0:
+            Ben += 1
+        else:
+            Maria += 1
+    if Maria > Ben:
+        return 'Maria'
+    elif Ben > Maria:
+        return 'Ben'
+    return None
